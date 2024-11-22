@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de PA</title>
+    {% load static %}
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .calculadora {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .tela {
+            width: 90%;
+            background-color: #222;
+            color: red;
+            text-align: center;
+            font-size: 1.5rem;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 90%;
+        }
+
+        label {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            border: 1px solid #555;
+            background-color: #333;
+            color: red;
+        }
+
+        .botao-calcular {
+            background-color: red;
+            color: white;
+            font-size: 1.5rem;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .botao-calcular:active {
+            background-color: darkred;
+        }
+
+        .resultado {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            color: lightgray;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculadora">
+        <h1>Calculadora de PA</h1>
+        <div class="tela">
+            Insira os valores para calcular a Progressão Aritmética.
+        </div>
+        <form method="POST">
+            {% csrf_token %}
+            <label for="primeiro_termo">Primeiro Termo:</label>
+            <input type="number" name="primeiro_termo" id="primeiro_termo" placeholder="Ex.: 1" required>
+
+            <label for="razao">Razão:</label>
+            <input type="number" name="razao" id="razao" placeholder="Ex.: 2" required>
+
+            <label for="quantidade_termos">Número de Termos:</label>
+            <input type="number" name="quantidade_termos" id="quantidade_termos" placeholder="Ex.: 10" required>
+
+            <button type="submit" class="botao-calcular">Calcular PA</button>
+        </form>
+
+        {% if termos %}
+        <div class="resultado">
+            <h2>Resultado</h2>
+            <p><strong>Termos:</strong> {{ termos|join:", " }}</p>
+            <p><strong>Soma:</strong> {{ soma }}</p>
+        </div>
+        {% endif %}
+
+      {% if erro %}
+      <div style="color: red; margin-bottom: 20px; text-align: center;">
+        {{ erro }}
+      </div>
+      {% endif %}
+
+    </div>
+</body>
+</html>
