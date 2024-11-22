@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-f$$wqk)xsk*zn$8o&n8!d$h49-b%vk)akl#mn87tp#9+e57k6m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['Calculadora_PA.onrender.com']
+ALLOWED_HOSTS = ['calculador_pa.onrender.com']
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
