@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-f$$wqk)xsk*zn$8o&n8!d$h49-b%vk)akl#mn87tp#9+e57k6m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['calculador_pa.onrender.com']
+ALLOWED_HOSTS = ['*']
 
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
@@ -132,3 +132,6 @@ MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
